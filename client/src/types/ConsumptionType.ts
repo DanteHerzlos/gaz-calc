@@ -1,0 +1,1 @@
+export type ConsumptionType = "perSec" | "perHour" | "perDay" | "perYear"

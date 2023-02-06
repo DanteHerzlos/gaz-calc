@@ -1,0 +1,22 @@
+.form
+  width: 100%
+  display: grid
+  grid-template-columns: 1fr 1fr
+  gap: 2rem
+
+.form_input
+  display: grid
+  grid-template-columns: 1fr 200px
+  gap: 1rem
+
+.errorMessage
+  margin-bottom: 2rem
+
+
+@media screen and (max-width: 1075px) 
+  .form
+    grid-template-columns: 1fr
+
+@media screen and (max-width: 600px) 
+  .form_input
+    grid-template-columns: 1fr
