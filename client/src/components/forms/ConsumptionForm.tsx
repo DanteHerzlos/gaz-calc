@@ -4,12 +4,12 @@ import Label from "@components/UI/Label"
 import Input from "@components/UI/Input"
 import { SubmitHandler, useForm } from "react-hook-form"
 import IConsumption from "types/IConsumption"
-import { useAppDispatch, useAppSelector } from "hooks/redux"
+import { useAppDispatch, useAppSelector } from "@hooks/redux"
 import {
   calcConsumptions,
   consumptionClearError,
 } from "@store/reducers/consumption/ActionCreators"
-import useTimeout from "hooks/useTimeout"
+import useTimeout from "@hooks/useTimeout"
 import ErrorMessage from "@components/UI/ErrorMessage"
 
 const ConsumptionForm = () => {
@@ -22,7 +22,6 @@ const ConsumptionForm = () => {
     shouldUseNativeValidation: true,
   })
 
-  
   useMemo(() => {
     setValue("perSec", consumptions.perSec)
     setValue("perHour", consumptions.perHour)
@@ -54,10 +53,15 @@ const ConsumptionForm = () => {
         />
       )}
 
-      <form onSubmit={handleSubmit(onSubmit)} className={cl.form}>
+      <form
+        data-testid="consum-form"
+        onSubmit={handleSubmit(onSubmit)}
+        className={cl.form}
+      >
         <div className={cl.form_input}>
           <Label value="м³/сек" />
           <Input
+            data-testid="first-input"
             isLoading={isLoading}
             placeholder="Введите число"
             register={{

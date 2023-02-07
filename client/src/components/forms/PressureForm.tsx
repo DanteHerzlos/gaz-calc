@@ -3,13 +3,13 @@ import cl from "@styles/components/forms/CalcForm.module.sass"
 import Label from "@components/UI/Label"
 import Input from "@components/UI/Input"
 import { SubmitHandler, useForm } from "react-hook-form"
-import { useAppDispatch, useAppSelector } from "hooks/redux"
+import { useAppDispatch, useAppSelector } from "@hooks/redux"
 import IPressure from "types/IPressure"
 import {
   calcPressures,
   pressureClearError,
 } from "@store/reducers/pressure/ActionCreators"
-import useTimeout from "hooks/useTimeout"
+import useTimeout from "@hooks/useTimeout"
 import ErrorMessage from "@components/UI/ErrorMessage"
 
 const PressureForm = () => {
@@ -21,8 +21,8 @@ const PressureForm = () => {
   const { register, handleSubmit, setValue } = useForm<IPressure>({
     shouldUseNativeValidation: true,
   })
-  
-  useMemo(() => {    
+
+  useMemo(() => {
     setValue("pascal", pressures.pascal)
     setValue("bar", pressures.bar)
     setValue("atm", pressures.atm)
@@ -47,10 +47,11 @@ const PressureForm = () => {
           message={error}
         />
       )}
-      <form className={cl.form}>
+      <form data-testid="press-form" className={cl.form}>
         <div className={cl.form_input}>
           <Label value="Па" />
           <Input
+            data-testid="first-input"
             isLoading={isLoading}
             placeholder="Введите число"
             register={{

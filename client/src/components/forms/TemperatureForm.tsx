@@ -2,14 +2,14 @@ import React, { useMemo } from "react"
 import cl from "@styles/components/forms/CalcForm.module.sass"
 import Label from "@components/UI/Label"
 import Input from "@components/UI/Input"
-import { useAppDispatch, useAppSelector } from "hooks/redux"
+import { useAppDispatch, useAppSelector } from "@hooks/redux"
 import { SubmitHandler, useForm } from "react-hook-form"
 import ITemperature from "types/ITemperature"
 import {
   calcTemperatures,
   temperatureClearError,
 } from "@store/reducers/temperature/ActionCreators"
-import useTimeout from "hooks/useTimeout"
+import useTimeout from "@hooks/useTimeout"
 import ErrorMessage from "@components/UI/ErrorMessage"
 
 const TemperatureForm = () => {
@@ -46,10 +46,11 @@ const TemperatureForm = () => {
           message={error}
         />
       )}
-      <form className={cl.form}>
+      <form data-testid="temp-form" className={cl.form}>
         <div className={cl.form_input}>
           <Label value="Кельвин" />
           <Input
+            data-testid="first-input"
             isLoading={isLoading}
             placeholder="Введите число"
             register={{

@@ -23,6 +23,8 @@
       "@services/*": ["services/*"],
       "@store/*": ["store/*"],
       "@assets/*": ["assets/*"],
+      "@hooks/*": ["hooks/*"],
+      "@tests/*": ["tests/*"],
     }
   },
   "include": ["src/**/*", ".eslintrc.js", "**/*.ts", "**/*.tsx"],
